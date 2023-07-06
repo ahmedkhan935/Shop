@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-md" >
+  <div class="container" style="justify-content: flex-start">
+  <a class="nav-link" style="text-decoration:none" routerLink="/cart">Cart</a>
+  <a *ngIf="!(user$ | async)" class="nav-link" style="text-decoration:none" routerLink="/Login">Login</a>
+  <div *ngIf="(user$ |async) as user" class="dropdown">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{user.displayName}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" routerLink="/products">Manage products</a>
+      <a class="dropdown-item" routerLink="/orders">Manage Orders</a>
+      <a class="dropdown-item" (click)="logout()" routerLink="**">Logout</a>
+    </div>
+  </div>
+  </div>
+</nav>
